@@ -3,8 +3,15 @@
 use v5.18;
 use strict;
 use warnings;
-use Data::Dumper;
 use POSIX qw(strftime);
+unless (eval {
+  require Data::Dumper::Concise;
+  Data::Dumper::Concise->import;
+  1;
+}) {
+  require Data::Dumper;
+  Data::Dumper->import;
+}
 
 my $token = $ARGV[0] || die "Usage: $0 token";
 
